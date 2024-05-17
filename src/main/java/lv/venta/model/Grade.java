@@ -40,6 +40,7 @@ public class Grade {
 		//Creating Linkage between two classes(Grade Courses)
 		@ManyToOne // need to specify the varaiable title
 		@ToString.Exclude // Used to stop unending loop between linked classes
+		@JoinColumn(name = "C_Id")
 		private Course course;
 		
 		

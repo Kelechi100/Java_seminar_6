@@ -34,13 +34,13 @@ public class Student {
 	private long stid;
 	
 	@NotNull
-	@Pattern(regexp = "[A-Z]{1}[a-z] +")
+	@Pattern(regexp = "[A-Z]{1}[a-z]+")
 	@Size(min = 2, max =20)
 	@Column(name = "Name")
 	private String name;
 	
 	@NotNull
-	@Pattern(regexp = "[A-Z]{1}[a-z] +")
+	@Pattern(regexp = "[A-Z]{1}[a-z]+")
 	@Size(min = 2, max =10)
 	@Column(name = "Surname")
 	private String Surname;

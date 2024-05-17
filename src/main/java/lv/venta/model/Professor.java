@@ -33,13 +33,13 @@ public class Professor {
 	private long idp;
 	
 	@NotNull
-	@Pattern(regexp = "[A-Z]{1}[a-z] +")
+	@Pattern(regexp = "[A-Z]{1}[a-z]+")
 	@Size(min = 2, max =20)
 	@Column(name = "Name")
 	private String name;
 	
 	@NotNull
-	@Pattern(regexp = "[A-Z]{1}[a-z] +")
+	@Pattern(regexp = "[A-Z]{1}[a-z]+")
 	@Size(min = 2, max =10)
 	@Column(name = "Surname")
 	private String Surname;
@@ -50,7 +50,7 @@ public class Professor {
 	
 	
 	//Creating Linkage between two classes(Professor/ Courses)
-	@OneToOne(mappedBy = "") // need to specify the varaiable title
+	@OneToOne(mappedBy = "professor") // need to specify the varaiable title
 	@ToString.Exclude // Used to stop unending loop between linked classes
 	private Course course;
 	
