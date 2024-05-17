@@ -1,11 +1,14 @@
 package lv.venta.model;
 
+import java.util.Collection;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
@@ -50,9 +53,15 @@ public class Course {
 	@JoinColumn(name = "Idp") // need to specify column name
 	private Professor professor;
 	
-	//Creating Linkage between two classes
-	@OneToOne
-	@JoinColumn(name = "G_Id") // need to specify column name
-	private Grade gradeValue;
+	@OneToMany(mappedBy =  "course") //need to specify title of variable
+	@ToString.Exclude // Used to stop unending loop between linked classes
+	private Collection<Grade> gradevalue;
+	
+	public Course(String title, int creditpoints, Professor professsor) {
+		setTitle(title);
+		setCreditpoints(creditpoints);
+		setProfessor(professsor);
+	}
+	
 
 }

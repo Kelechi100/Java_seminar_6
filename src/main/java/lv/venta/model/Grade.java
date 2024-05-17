@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -39,7 +38,7 @@ public class Grade {
 		
 		
 		//Creating Linkage between two classes(Grade Courses)
-		@OneToOne(mappedBy = "") // need to specify the varaiable title
+		@ManyToOne // need to specify the varaiable title
 		@ToString.Exclude // Used to stop unending loop between linked classes
 		private Course course;
 		
@@ -49,8 +48,10 @@ public class Grade {
 		@JoinColumn(name = "STID")
 		private Student student;
 			
-		public Grade(int gradevalue) {
+		public Grade(int gradevalue, Student student, Course course) {
 			setGradevalue(gradevalue);
+			setCourse(course);
+			setStudent(student);
 		}
 
 }
