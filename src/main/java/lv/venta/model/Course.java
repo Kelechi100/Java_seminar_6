@@ -29,39 +29,37 @@ import lombok.ToString;
 @Table(name = "CourseTable")
 @Entity
 public class Course {
-	//Varaibles
+	// Varaibles
 	@Setter(value = AccessLevel.NONE)
 	@Column(name = "C_Id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long C_id;
-	
-	
+
 	@NotNull
 	@Pattern(regexp = "[A-Za-z ]+")
-	@Size(min = 5, max =20)
+	@Size(min = 5, max = 20)
 	@Column(name = "Title")
 	private String title;
-	
+
 	@Min(1)
 	@Max(20)
 	@Column(name = "Creditpoints")
 	private int creditpoints;
-	
-	//Creating Linkage between two classes
+
+	// Creating Linkage between two classes
 	@OneToOne
 	@JoinColumn(name = "Idp") // need to specify column name
 	private Professor professor;
-	
-	@OneToMany(mappedBy =  "course") //need to specify title of variable
+
+	@OneToMany(mappedBy = "course") // need to specify title of variable
 	@ToString.Exclude // Used to stop unending loop between linked classes
 	private Collection<Grade> gradevalue;
-	
+
 	public Course(String title, int creditpoints, Professor professsor) {
 		setTitle(title);
 		setCreditpoints(creditpoints);
 		setProfessor(professsor);
 	}
-	
 
 }

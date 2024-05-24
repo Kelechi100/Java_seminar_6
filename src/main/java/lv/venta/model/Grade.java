@@ -24,35 +24,33 @@ import lombok.ToString;
 @Entity
 
 public class Grade {
-	//Varaibles
-		@Setter(value = AccessLevel.NONE)
-		@Column(name = "G_Id")
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		private long g_id;
-		
-		@Min(4)
-		@Max(10)
-		@Column(name = "Score")
-		private int gradevalue;
-		
-		
-		//Creating Linkage between two classes(Grade Courses)
-		@ManyToOne // need to specify the varaiable title
-		@ToString.Exclude // Used to stop unending loop between linked classes
-		@JoinColumn(name = "C_Id")
-		private Course course;
-		
-		
-		//Creating Linkage between two classes(Grades/ Student)
-		@ManyToOne// need to specify the varaiable title
-		@JoinColumn(name = "STID")
-		private Student student;
-			
-		public Grade(int gradevalue, Student student, Course course) {
-			setGradevalue(gradevalue);
-			setCourse(course);
-			setStudent(student);
-		}
+	// Varaibles
+	@Setter(value = AccessLevel.NONE)
+	@Column(name = "G_Id")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long g_id;
+
+	@Min(4)
+	@Max(10)
+	@Column(name = "Score")
+	private int gradevalue;
+
+	// Creating Linkage between two classes(Grade Courses)
+	@ManyToOne // need to specify the varaiable title
+	@ToString.Exclude // Used to stop unending loop between linked classes
+	@JoinColumn(name = "C_Id")
+	private Course course;
+
+	// Creating Linkage between two classes(Grades/ Student)
+	@ManyToOne // need to specify the varaiable title
+	@JoinColumn(name = "STID")
+	private Student student;
+
+	public Grade(int gradevalue, Student student, Course course) {
+		setGradevalue(gradevalue);
+		setCourse(course);
+		setStudent(student);
+	}
 
 }

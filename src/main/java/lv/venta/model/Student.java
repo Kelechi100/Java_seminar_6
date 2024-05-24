@@ -26,32 +26,30 @@ import lombok.ToString;
 @Entity
 
 public class Student {
-	//Variables
+	// Variables
 	@Setter(value = AccessLevel.NONE)
 	@Column(name = "STID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long stid;
-	
+
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1}[a-z]+")
-	@Size(min = 2, max =20)
+	@Size(min = 2, max = 20)
 	@Column(name = "Name")
 	private String name;
-	
+
 	@NotNull
 	@Pattern(regexp = "[A-Z]{1}[a-z]+")
-	@Size(min = 2, max =10)
+	@Size(min = 2, max = 10)
 	@Column(name = "Surname")
 	private String Surname;
-	
-	
-	@OneToMany(mappedBy =  "student") //need to specify title of variable
+
+	@OneToMany(mappedBy = "student") // need to specify title of variable
 	@ToString.Exclude // Used to stop unending loop between linked classes
 	private Collection<Grade> grades;
-	
-	
-	//Adding an arug Constructor
+
+	// Adding an arug Constructor
 	public Student(String name, String Surname) {
 		setName(name);
 		setSurname(Surname);
