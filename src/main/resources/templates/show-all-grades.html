@@ -1,0 +1,28 @@
+<hmtl xmlns:th="http://www.thymeleaf.org">
+
+	<body>
+		<p>All Grades:</p>
+		<table border = "1">
+			<tr>
+				<th>ID</th>
+				<th>Value</th>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Course Title</th>
+			</tr>
+			<tr th:each = "temp: ${mypackage}">
+				<td  th:text="${temp.getG_id()}"></td>
+				<td  th:text="${temp.getGradevalue()}"></td>
+				<td  th:text="${temp.getStudent().getName()}"></td>
+				<td  th:text="${temp.getStudent().getSurname()}"></td>
+				<td  th:text="${temp.getCourse().getTitle()}"></td>
+
+				
+			</tr>
+		</table>
+				
+		
+	</body>
+	
+		
+</hmtl>

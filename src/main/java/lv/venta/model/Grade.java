@@ -31,7 +31,7 @@ public class Grade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long g_id;
 
-	@Min(4)
+	@Min(1)
 	@Max(10)
 	@Column(name = "Score")
 	private int gradevalue;
